@@ -6,6 +6,27 @@
     <title>Web Sockets</title>
 </head>
 <body>
-    <h1>Hello Dude</h1>
+    <h1>Chat App</h1>
+
+    <input type="text" placeholder="enter some msg" , id="msginp">
+    <button id = "sndbtn">Send</button>
+
+
+    <script src = "/socket.io/socket.io.js"></script>
+    <script>
+        let msg = document.getElementById("msginp");
+        let btn = document.getElementById('sndbtn');
+
+        btn.addEventListener("click" , ()=>{
+            socket.emit("msgfromF" , msg.value)
+        })
+
+        // const socket = io();
+
+
+        socket.on("msgfromB" , (msg)=>{
+            console.log(msg)
+        })
+    </script>
 </body>
 </html>
